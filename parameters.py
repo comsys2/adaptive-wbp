@@ -1,6 +1,6 @@
 import numpy as np
 
-# Exponent matrix for C2
+# Exponent matrix for the QC-LDPC code C2(3224, 1612) 
 E_C2 = np.array([
     [345, 152,  72, 376, 377, 197,   4, 144],
     [187, 398, 320, 225, 330, 198,  79, 289],
@@ -8,7 +8,7 @@ E_C2 = np.array([
     [111, 233, 380, 332,  47,  76, 222, 247],
 ])
 
-# Left part of exponent matrix for C3
+# Left part of exponent matrix for the QC-LDPC code C3(4016, 2761) 
 E_C3_left = np.array([
     [  6,  98, 208, 177,  76,  76,  76,  48],
     [198,  42, 155, 127,  29,  32,  35,  10],
@@ -17,7 +17,7 @@ E_C3_left = np.array([
     [181, 142, 121, 210, 229,  98, 218,  59],
 ])
 
-# Right part of exponent matrix for C3
+# Right part of exponent matrix for the QC-LDPC code C3(4016, 2761) 
 E_C3_right = np.array([
     [111,  76,  76,  34,  76,  76,  64,  85],
     [ 76,  44,  47,   8,  53,  56,  47,  71],
