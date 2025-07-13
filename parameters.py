@@ -50,7 +50,6 @@ def PCM_QCLDPC(E, N):
 
     E = np.array(E)
     M = E.max() + 1
-    print(M)
 
     if not np.issubdtype(E.dtype, np.integer) or not np.all(E >= -1):
         raise ValueError("All entries in E must be integers ≥ -1.")
@@ -63,7 +62,6 @@ def PCM_QCLDPC(E, N):
             if e == -1:
                 block = np.zeros((N, N), dtype=int)
             else:
-                #print(e, type(e))
                 block = circular_shift_identity(N, e)
             block_row.append(block)
         H_rows.append(np.hstack(block_row))  # Concatenate horizontally
