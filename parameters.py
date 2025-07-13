@@ -70,6 +70,11 @@ def PCM_QCLDPC(E, N):
     
     return H
 
+##################### C1, C4, C5 ############################
+
+PCM_C1 = np.load('data/PCM_C1_BCH_CycleReduced_L63_R57.npy')
+PCM_C4 = np.load('data/PCM_C4_5G-NR_L420_R43.npy')
+PCM_C5 = np.load('data/PCM_C5_CCSDS_L128_R05.npy')
 
 
 ##################### C2 ############################
