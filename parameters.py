@@ -15,9 +15,9 @@ def circular_shift_identity(N, e):
     """
 
     if not isinstance(N, int) or N < 2:
-        raise ValueError("N must be an integer ≥ 2.")
-    if not isinstance(e, int) or e < 0 or e > N - 1:
-        raise ValueError("e must be an integer such that 0 ≤ e ≤ N - 1.")
+        raise ValueError(f"N={N} is provide,  it must be an integer ≥ 2.")
+    if not (np.issubdtype(type(e), np.integer)) or e < 0 or e > N - 1:
+        raise ValueError(f"e = {e} and N = {N} is provided,  but e must be an integer satisfying 0 ≤ e ≤ N - 1.")
 
     I = np.eye(N, dtype=int)
 
@@ -26,26 +26,6 @@ def circular_shift_identity(N, e):
 
     return CPM
 
-import numpy as np
-
-def circular_shift_identity(N, e):
-    """
-    Returns the circular right-shift of the identity matrix I_N by e positions.
-
-    Parameters:
-    - N (int): Size of the identity matrix (N ≥ 1)
-    - e (int): Number of positions to shift (0 ≤ e ≤ N - 1)
-
-    Returns:
-    - numpy.ndarray: N x N matrix with each row shifted right by e positions
-    """
-    if not isinstance(N, int) or N < 1:
-        raise ValueError("N must be an integer ≥ 1.")
-    if not isinstance(e, int) or not (0 <= e <= N - 1):
-        raise ValueError(f"e must be an integer between 0 and {N - 1}.")
-
-    I = np.eye(N, dtype=int)
-    return np.roll(I, shift=e, axis=1)
 
 ########
 
@@ -70,6 +50,7 @@ def PCM_QCLDPC(E, N):
 
     E = np.array(E)
     M = E.max() + 1
+    print(M)
 
     if not np.issubdtype(E.dtype, np.integer) or not np.all(E >= -1):
         raise ValueError("All entries in E must be integers ≥ -1.")
@@ -82,6 +63,7 @@ def PCM_QCLDPC(E, N):
             if e == -1:
                 block = np.zeros((N, N), dtype=int)
             else:
+                #print(e, type(e))
                 block = circular_shift_identity(N, e)
             block_row.append(block)
         H_rows.append(np.hstack(block_row))  # Concatenate horizontally
@@ -98,7 +80,7 @@ def PCM_QCLDPC(E, N):
 
 n2 = 3224
 k2 = 1612
-N = 403 # listing factor
+N2 = 403 # listing factor
 
 # Exponent matrix for the QC-LDPC code C2(3224, 1612) 
 E_C2 = np.array([
@@ -106,7 +88,7 @@ E_C2 = np.array([
     [187, 398, 320, 225, 330, 198,  79, 289],
     [271, 165, 259, 105, 288, 254,  51, 236],
     [111, 233, 380, 332,  47,  76, 222, 247],
-])
+], dtype=int)
 
 H2 = PCM_QCLDPC(E_C2, N2)
 
@@ -115,7 +97,7 @@ H2 = PCM_QCLDPC(E_C2, N2)
 # QC-LDPC code C3(4016, 2761), (5, 16)-regular
 n3 = 4016
 k3 = 2761
-N = 251  # lifting factor
+N3 = 251  # lifting factor
 
 # Left part of exponent matrix 
 
