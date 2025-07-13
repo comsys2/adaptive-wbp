@@ -1,2 +1,2 @@
 # adaptive-wbp
-The repository for WBP
+This is a repository for the papers on WBP. To be completed ...
