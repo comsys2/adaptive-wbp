@@ -1,3 +1,5 @@
+########### Parameters of error-correcting codes used in the conference paper
+
 import numpy as np
 
 ############## functions #############
