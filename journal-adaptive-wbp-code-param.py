@@ -1,3 +1,6 @@
+########### Parameters of error-correcting codes used in the journal paper
+
+
 import numpy as np
 
 
